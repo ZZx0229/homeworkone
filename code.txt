@@ -1,0 +1,64 @@
+package 项目版本管理实践;
+
+import java.util.Scanner;
+
+public class week12 {
+
+	public static void main(String[] args) {
+		for(int i=0;i<20;i++) {
+		System.out.println("========================");
+		System.out.println("欢迎使用密码管理系统");
+		System.out.println("========================");
+		System.out.println("请选择操作：");
+		System.out.println("1.加密");
+		System.out.println("2.解密");
+		System.out.println("3.判断密码强度");
+		System.out.println("4.密码生成");
+		System.out.println("5.退出");
+		System.out.println();
+		
+		Scanner sc = new Scanner(System.in);
+		code c = new code();
+		String str = new String();
+		System.out.print("请输入一个字符串：");
+		str = sc.next();
+		
+		System.out.print("请输入要执行的操作：");
+		int number = sc.nextInt();
+		
+		int y = 3;
+		c.setKey(y);
+		
+		switch(number) {
+			case 1:System.out.println("字符串加密后的结果为：" + c.encrypt(str));break;
+			case 2:System.out.println("字符串解密后的结果为：" + c.decode(str));break;
+			case 3:System.out.println("判断密码强度");break;
+			case 4:System.out.println("密码生成");break;
+			default:System.out.println("已成功退出");return;
+			}
+		}
+	}
+}
+class code{
+	private int key;
+	public code() {
+		key = 0;
+	}
+	public void setKey(int y) {
+		key = y;
+	}
+	public String encrypt(String s) {
+		String r = "";
+		for(int i = 0;i < s.length();i++) {
+			r += (char)(s.charAt(i) + 3);
+		}
+		return r;
+	}
+	public String decode(String s) {
+		String r = "";
+		for(int i = 0;i < s.length();i++) {
+			r += (char)(s.charAt(i) - 3);
+		}
+		return r;
+	}
+}
